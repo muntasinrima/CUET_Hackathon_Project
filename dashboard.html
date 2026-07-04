@@ -14,8 +14,12 @@
     <div class="app-container">
         <!-- SIDEBAR -->
         <aside class="main-sidebar">
-            <div class="sidebar-brand"><i class="fa-solid fa-shield-halved brand-icon"></i>
-                <h2>ResQ <span>AI</span></h2>
+            <div class="sidebar-brand">
+                <a href="index.html"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <i class="fa-solid fa-shield-halved brand-icon"></i>
+                    <h2>ResQ <span>AI</span></h2>
+                </a>
             </div>
             <nav class="sidebar-menu">
                 <a href="dashboard.html" class="menu-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
@@ -30,13 +34,78 @@
 
         <!-- CONTENT -->
         <main class="content-viewport">
-            <header class="top-bar">
-                <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
-                        placeholder="Search shelters..."></div>
-                <div class="top-bar-actions"><button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
-                    <div class="user-profile"><i class="fa-solid fa-user"></i></div>
+            <div class="dashboard-top-nav"
+                style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 15px 24px; background: #ffffff; border-bottom: 1px solid #e2e8f0; gap: 20px;">
+
+                <div class="weather-widget-left" style="display: flex; align-items: center; gap: 25px;">
+                    <div class="weather-meta-block">
+                        <div
+                            style="display: flex; align-items: center; gap: 6px; color: #0f172a; font-weight: 700; font-size: 15px;">
+                            <i class="fa-solid fa-location-dot" style="color: #2563eb;"></i>
+                            <span id="dash-city">Detecting Location...</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+                            <h2 id="dash-temp" style="font-size: 26px; font-weight: 800; color: #0f172a; margin: 0;">
+                                --°C</h2>
+                            <img id="dash-icon" src="" alt="Condition"
+                                style="width: 38px; height: 38px; display: none;">
+                            <span id="dash-desc"
+                                style="font-size: 13px; color: #64748b; font-weight: 500; text-transform: capitalize;">--</span>
+                        </div>
+                    </div>
+
+                    <div class="weather-sub-details"
+                        style="display: flex; gap: 15px; border-left: 1px solid #e2e8f0; padding-left: 20px; color: #64748b; font-size: 12px; font-weight: 500;">
+                        <div>
+                            <span style="display: block; color: #94a3b8; font-size: 10px;">HUMIDITY</span>
+                            <span id="dash-humidity" style="color: #0f172a; font-weight: 600;">--%</span>
+                        </div>
+                        <div>
+                            <span style="display: block; color: #94a3b8; font-size: 10px;">WIND SPEED</span>
+                            <span id="dash-wind" style="color: #0f172a; font-weight: 600;">-- m/s</span>
+                        </div>
+                    </div>
+
+                    <div class="weather-mode-dropdown" style="position: relative; display: inline-block;">
+                        <button onclick="toggleWeatherMenu()"
+                            style="background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> Weather Options <i
+                                class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
+                        </button>
+                        <div id="weatherMenuOptions"
+                            style="display: none; position: absolute; top: 110%; left: 0; background: #ffffff; min-width: 180px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-radius: 8px; border: 1px solid #e2e8f0; z-index: 100; padding: 6px 0;">
+                            <a href="#" onclick="getAutoLocationWeather(event)"
+                                style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; color: #1e293b; text-decoration: none; font-size: 13px; font-weight: 500; transition: background 0.2s;">
+                                <i class="fa-solid fa-crosshairs" style="color: #10b981;"></i> Auto Update (GPS)
+                            </a>
+                            <a href="#" onclick="triggerManualSearchPrompt(event)"
+                                style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; color: #1e293b; text-decoration: none; font-size: 13px; font-weight: 500; transition: background 0.2s;">
+                                <i class="fa-solid fa-magnifying-glass" style="color: #2563eb;"></i> Manual Search
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </header>
+
+                <div class="nav-right-actions"
+                    style="display: flex; align-items: center; gap: 20px; flex-shrink: 0; margin-left: auto;">
+                    <div class="search-box"
+                        style="position: relative; width: 240px; margin: 0; display: flex; align-items: center;">
+                        <i class="fa-solid fa-magnifying-glass"
+                            style="position: absolute; left: 14px; color: #94a3b8; font-size: 14px;"></i>
+                        <input type="text" placeholder="Search shelters..."
+                            style="width: 100%; padding: 10px 14px 10px 40px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; background: #f8fafc; transition: border 0.2s;">
+                    </div>
+
+                    <div class="top-bar-actions" style="display: flex; align-items: center; gap: 15px;">
+                        <button class="icon-btn"
+                            style="background: none; border: none; font-size: 16px; color: #64748b; cursor: pointer;"><i
+                                class="fa-solid fa-bell"></i></button>
+                        <div class="user-profile" style="font-size: 20px; color: #1e293b;"><i
+                                class="fa-solid fa-user"></i></div>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="dynamic-container">
                 <div class="metrics-grid">
@@ -73,12 +142,9 @@
             </div>
         </main>
     </div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        const miniMap = L.map('mini-map', { zoomControl: false }).setView([22.8156, 89.5634], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(miniMap);
-        L.marker([22.8156, 89.5634]).addTo(miniMap);
-    </script>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>
