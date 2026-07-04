@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQ AI - Disaster Management Portal</title>
+    <!-- FontAwesome & Google Fonts link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="landing-body">
+
+    <!-- TOP NAVBAR (Login Button Removed) -->
+    <nav class="landing-nav">
+        <div class="nav-logo">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>ResQ AI</span>
+        </div>
+        <div class="nav-menu">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div style="width: 80px;"></div> <!-- Visual balance container -->
+    </nav>
+
+    <!-- HERO SECTION (Full Width Layout) -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>AI-Powered<br>Disaster<br>Management</h1>
+            <p>Helping people find the safest shelters, medical support, emergency alerts, and AI-powered
+                recommendations.</p>
+            <div class="hero-buttons">
+                <button class="btn-orange" onclick="window.location.href='dashboard.html'">Get Started</button>
+                <button class="btn-outline">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image-area">
+            <!-- Professional SVG Earth Globe to match image_9f9647.png -->
+            <svg class="globe-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="#2563eb" />
+                <path d="M25,40 Q30,30 45,35 T65,30 T75,45 T55,60 T35,65 Z" fill="#0f172a" />
+                <path d="M60,65 Q70,60 80,68 T75,80 T60,75 Z" fill="#0f172a" />
+                <circle cx="75" cy="40" r="4" fill="#0f172a" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- EMERGENCY ALERT BANNER -->
+    <div class="emergency-container">
+        <div class="alert-box-card">
+            <div class="alert-left">
+                <div class="alert-icon-circle">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="alert-text">
+                    <h3>Emergency Alert</h3>
+                    <p>Cyclone Remal is expected to hit coastal areas within the next 24 hours. Stay alert and follow
+                        official instructions.</p>
+                </div>
+            </div>
+            <button class="btn-view-details">View Details</button>
+        </div>
+    </div>
+
+    <!-- FEATURES INFOCARDS GRID -->
+    <section class="features-container">
+        <div class="features-grid">
+            <div class="feature-info-card">
+                <i class="fa-solid fa-house-medical card-icon-blue"></i>
+                <h4>AI Shelter Recommendation</h4>
+                <p>Find the safest shelter based on capacity, food and medical support.</p>
+            </div>
+            <div class="feature-info-card">
+                <i class="fa-solid fa-map-location-dot card-icon-blue"></i>
+                <h4>Live Disaster Map</h4>
+                <p>Real-time disaster zones, shelters and emergency services.</p>
+            </div>
+            <div class="feature-info-card">
+                <i class="fa-solid fa-robot card-icon-blue"></i>
+                <h4>AI Assistant</h4>
+                <p>Ask disaster-related questions in Bangla & English.</p>
+            </div>
+            <div class="feature-info-card">
+                <i class="fa-solid fa-phone-volume card-icon-blue"></i>
+                <h4>Emergency Contacts</h4>
+                <p>Instant access to police, fire service and ambulance.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
