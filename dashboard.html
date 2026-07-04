@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ResQ AI - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="main-sidebar">
+            <div class="sidebar-brand"><i class="fa-solid fa-shield-halved brand-icon"></i>
+                <h2>ResQ <span>AI</span></h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
+                <a href="map.html" class="menu-item"><i class="fa-solid fa-map-location-dot"></i> Map</a>
+                <a href="shelters.html" class="menu-item"><i class="fa-solid fa-person-shelter"></i> Shelters</a>
+                <a href="heatwave.html" class="menu-item"><i class="fa-solid fa-temperature-high"></i> Heatwave</a>
+                <a href="assistant.html" class="menu-item"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+                <a href="report.html" class="menu-item"><i class="fa-solid fa-triangle-exclamation"></i> Report</a>
+                <a href="settings.html" class="menu-item"><i class="fa-solid fa-gear"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="content-viewport">
+            <header class="top-bar">
+                <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
+                        placeholder="Search shelters..."></div>
+                <div class="top-bar-actions"><button class="icon-btn"><i class="fa-solid fa-bell"></i></button>
+                    <div class="user-profile"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <div class="dynamic-container">
+                <div class="metrics-grid">
+                    <div class="metric-card"><span class="card-title">Nearby Shelters</span><span
+                            class="card-value txt-blue">52</span></div>
+                    <div class="metric-card"><span class="card-title">Hospitals</span><span
+                            class="card-value txt-blue">18</span></div>
+                    <div class="metric-card"><span class="card-title">Emergency Alerts</span><span
+                            class="card-value txt-red">03</span></div>
+                    <div class="metric-card"><span class="card-title">Weather</span><span
+                            class="card-value txt-orange">34°C</span></div>
+                </div>
+
+                <div class="dashboard-split">
+                    <div class="panel-card">
+                        <h3>🤖 AI Recommendation</h3>
+                        <p class="rec-intro">Based on your current location, the safest shelter is <strong>Khulna
+                                Government Shelter</strong>.</p>
+                        <ul class="rec-list">
+                            <li><i class="fa-solid fa-square-check text-green"></i> Available Capacity : 128</li>
+                            <li><i class="fa-solid fa-box-open text-purple"></i> Food Available</li>
+                            <li><i class="fa-solid fa-kit-medical text-red"></i> Medical Support</li>
+                            <li><i class="fa-solid fa-bus text-blue"></i> Distance : 2.3 KM</li>
+                        </ul>
+                        <button class="action-btn-primary" onclick="window.location.href='map.html'">View
+                            Shelter</button>
+                    </div>
+
+                    <div class="panel-card">
+                        <h3>Live Disaster Map</h3>
+                        <div id="mini-map" class="map-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const miniMap = L.map('mini-map', { zoomControl: false }).setView([22.8156, 89.5634], 13);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(miniMap);
+        L.marker([22.8156, 89.5634]).addTo(miniMap);
+    </script>
+</body>
+
+</html>
