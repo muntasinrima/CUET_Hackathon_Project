@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyclone Optimizer - RescuAI</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <h1>🛡️ Rescu<span>AI</span></h1>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-btn secondary">Home Portal</a>
+            <a href="cyclone.html" class="nav-btn active">Cyclone Module</a>
+            <a href="heatwave.html" class="nav-btn secondary">Heatwave Module</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div>
+                <h3>🌪️ Cyclone Control Matrix</h3>
+                <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px; line-height: 1.5;">Automated live
+                    triage mapping using distance matrices and critical supply optimization logic.</p>
+            </div>
+
+            <div class="search-group">
+                <input type="text" id="target-search" placeholder="Enter target cluster (e.g. Mirpur)...">
+                <button onclick="triggerSpatialSearch()">Query</button>
+            </div>
+
+            <div class="ai-box">
+                <h4>🤖 AI-Ranked Optimal Shelters</h4>
+                <ul class="ai-list" id="shelter-injection">
+                </ul>
+            </div>
+
+            <div class="legend-box">
+                <h4>Operational Status Index:</h4>
+                <div class="legend-item"><span class="dot green"></span> High Resource Viability (Optimal)</div>
+                <div class="legend-item"><span class="dot red"></span> Critical Resource Saturation (At Risk)</div>
+            </div>
+        </aside>
+
+        <main class="map-viewport">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Leaflet Engine Initializer
+        const map = L.map('map', { zoomControl: false }).setView([23.8223, 90.3654], 12);
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        // Premium Dark Tile layer implementation
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap © CARTO'
+        }).addTo(map);
+
+        // Core Pipeline Mock Datasets
+        const criticalShelters = [
+            { id: 1, name: "Mirpur Sector-10 Core Facility", lat: 23.8223, lng: 90.3654, food: "94%", medical: "Equipped", load: "42%", status: "high", recommendation: "Optimal capacity; lowest evacuation risk radius." },
+            { id: 2, name: "Uttara Model High School Block-B", lat: 23.8759, lng: 90.3795, food: "81%", medical: "Equipped", load: "51%", status: "high", recommendation: "Stable supply chain routes verified." },
+            { id: 3, name: "Dhanmondi Central Annex", lat: 23.7461, lng: 90.3742, food: "22%", medical: "Shortage", load: "98%", status: "low", recommendation: "Exceeded structural containment safety profile." }
+        ];
+
+        // UI Injection Layer Pipeline
+        const listEngine = document.getElementById('shelter-injection');
+
+        criticalShelters.forEach(facility => {
+            // Render Map Node Map Marker
+            const markerColor = facility.status === "high" ? "#10b981" : "#ef4444";
+            const node = L.circleMarker([facility.lat, facility.lng], {
+                radius: 11,
+                fillColor: markerColor,
+                color: "#ffffff",
+                weight: 2,
+                fillOpacity: 0.95
+            }).addTo(map);
+
+            node.bindPopup(`
+                <div style="color: #fff; font-size:13px; line-height: 1.5;">
+                    <b style="color:${markerColor}; font-size:14px;">${facility.name}</b><br><br>
+                    📦 Ration Stocks: ${facility.food}<br>
+                    ⚕️ Medical Status: ${facility.medical}<br>
+                    👥 Current Load: ${facility.load}
+                </div>
+            `);
+
+            // Inject ranking parameters into sidebar panel
+            if (facility.status === "high") {
+                const item = document.createElement('li');
+                item.innerHTML = `🏁 <b>${facility.name}</b><span>💡 Reason: ${facility.recommendation}</span>`;
+                listEngine.appendChild(item);
+            }
+        });
+
+        // Search Interface Handling API Router Simulation
+        function triggerSpatialSearch() {
+            const val = document.getElementById('target-search').value.toLowerCase();
+            if (val.includes("mirpur")) {
+                map.flyTo([23.8223, 90.3654], 14, { animate: true, duration: 1.5 });
+            } else if (val.includes("uttara")) {
+                map.flyTo([23.8759, 90.3795], 14, { animate: true, duration: 1.5 });
+            } else {
+                alert("Target coordinates not indexed within immediate disaster footprint area.");
+            }
+        }
+    </script>
+</body>
+
+</html>

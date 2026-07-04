@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatwave Tracker - RescuAI</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <h1>🛡️ Rescu<span>AI</span></h1>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-btn secondary">Home Portal</a>
+            <a href="cyclone.html" class="nav-btn secondary">Cyclone Module</a>
+            <a href="heatwave.html" class="nav-btn active">Heatwave Module</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div>
+                <h3>☀️ Thermal Exposure Engine</h3>
+                <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px; line-height: 1.5;">Microclimate
+                    segmentation zoning models tracking hazardous urban radiant heat indices.</p>
+            </div>
+
+            <div class="search-group">
+                <input type="text" id="heat-search" placeholder="Search target sector (e.g. Motijheel)...">
+                <button onclick="triggerThermalQuery()" style="background-color: #10b981;">Analyze</button>
+            </div>
+
+            <div class="ai-box heatwave">
+                <h4 style="color: #10b981;">📊 Shift-Work Safety Operational Order</h4>
+                <p style="font-size: 13.5px; line-height: 1.6; color: var(--text-main);">
+                    Thermal modeling mandates suspension of outdoor logistics and infrastructure operations inside **Red
+                    Anomalous Grids** between 11:30 AM - 03:30 PM local time.
+                </p>
+            </div>
+
+            <div class="legend-box">
+                <h4>Spatial Temperature Anomalies:</h4>
+                <div class="legend-item"><span class="square red"></span> Hyper-Thermal Hazard Zone (>41.5°C)</div>
+                <div class="legend-item"><span class="square green"></span> Baseline Equilibrium Zone (Safe)</div>
+            </div>
+        </aside>
+
+        <main class="map-viewport">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Leaflet Engine Initializer
+        const map = L.map('map', { zoomControl: false }).setView([23.7426, 90.4100], 13);
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        // Premium Dark Tile layer implementation
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap © CARTO'
+        }).addTo(map);
+
+        // Core Spatial Polygon Layer Datasets
+        const microclimateGrids = [
+            { name: "Motijheel Heavy Commercial Grid", center: [23.7330, 90.4173], radius: 900, hazardLevel: "danger", metrics: "Radiant Temperature: 43.2°C (Critical)" },
+            { name: "Ramna Vegetative Canopy Zone", center: [23.7426, 90.4005], radius: 750, hazardLevel: "safe", metrics: "Radiant Temperature: 34.1°C (Within safety bounds)" }
+        ];
+
+        // Spatial Grid Overlay Mesh Construction Engine
+        microclimateGrids.forEach(zone => {
+            const colorCode = zone.hazardLevel === "danger" ? "#ef4444" : "#10b981";
+
+            const areaMesh = L.circle(zone.center, {
+                radius: zone.radius,
+                color: colorCode,
+                fillColor: colorCode,
+                fillOpacity: 0.28,
+                weight: 2
+            }).addTo(map);
+
+            areaMesh.bindPopup(`
+                <div style="color: #fff; font-size:13px; line-height: 1.4;">
+                    <b style="color:${colorCode}; font-size:14px;">${zone.name}</b><br><br>
+                    ⚡ Status: ${zone.hazardLevel === "danger" ? "Severe Hyper-Exposure Alert" : "Normal Adaptive Index"}<br>
+                    🌡️ Real-Time Telemetry: ${zone.metrics}
+                </div>
+            `);
+        });
+
+        // Search Interface Thermal Handler Router
+        function triggerThermalQuery() {
+            const val = document.getElementById('heat-search').value.toLowerCase();
+            if (val.includes("motijheel")) {
+                map.flyTo([23.7330, 90.4173], 14, { animate: true, duration: 1.5 });
+                alert("🚨 CRITICAL HAZARD: Target sector Motijheel is flagged with a high Thermal Index. Implement immediate shifts.");
+            } else if (val.includes("ramna")) {
+                map.flyTo([23.7426, 90.4005], 14, { animate: true, duration: 1.5 });
+                alert("✅ STABLE GRID: Target sector Ramna verified safe for continuous operation.");
+            } else {
+                alert("Microclimate boundary grid not indexed in current tracking vector.");
+            }
+        }
+    </script>
+</body>
+
+</html>
