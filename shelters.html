@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="shelters">
     <div class="app-container">
         <aside class="main-sidebar">
             <div class="sidebar-brand">
@@ -31,13 +31,15 @@
         <main class="content-viewport">
             <div class="dynamic-container">
                 <div class="panel-card">
-                    <h3>🏠 Shelters Directory</h3>
-                    <p style="color: var(--text-muted);">Manage and view live structural safety database metrics here.
-                    </p>
+                    <h3>Shelters Directory</h3>
+                    <p id="shelter-summary" class="muted-line">Nearby shelters will appear after location detection.</p>
+                    <div id="route-output" class="route-output">Select a shelter to check route status.</div>
+                    <div id="shelter-list" class="data-card-grid"></div>
                 </div>
             </div>
         </main>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

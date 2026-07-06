@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="report">
     <div class="app-container">
         <aside class="main-sidebar">
             <div class="sidebar-brand">
@@ -32,13 +32,39 @@
         <main class="content-viewport">
             <div class="dynamic-container">
                 <div class="panel-card">
-                    <h3>⚠️ Emergency Report Control</h3>
-                    <p style="color: var(--text-muted);">Broadcast live field casualties or local threat logs directly
-                        to active triage units.</p>
+                    <h3>Emergency Report Control</h3>
+                    <p class="muted-line">Submit incident information with your current location attached automatically.</p>
+                    <form id="report-form" class="settings-form">
+                        <label>Incident type
+                            <select name="type" required>
+                                <option value="medical">Medical emergency</option>
+                                <option value="shelter">Shelter support needed</option>
+                                <option value="road">Road blocked</option>
+                                <option value="food">Food or water shortage</option>
+                                <option value="other">Other hazard</option>
+                            </select>
+                        </label>
+                        <label>Severity
+                            <select name="severity" required>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </label>
+                        <label>Contact number
+                            <input name="contact" type="tel" placeholder="Optional phone number">
+                        </label>
+                        <label>Details
+                            <textarea name="details" rows="5" placeholder="Write what happened, how many people need help, and any road issue." required></textarea>
+                        </label>
+                        <button class="action-btn-primary" type="submit">Submit report</button>
+                    </form>
+                    <div id="report-status" class="route-output">No report submitted yet.</div>
                 </div>
             </div>
         </main>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

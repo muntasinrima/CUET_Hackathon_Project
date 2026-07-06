@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="dashboard">
     <div class="app-container">
         <!-- SIDEBAR -->
         <aside class="main-sidebar">
@@ -110,25 +110,25 @@
             <div class="dynamic-container">
                 <div class="metrics-grid">
                     <div class="metric-card"><span class="card-title">Nearby Shelters</span><span
-                            class="card-value txt-blue">52</span></div>
+                            id="metric-shelters" class="card-value txt-blue">--</span></div>
                     <div class="metric-card"><span class="card-title">Hospitals</span><span
                             class="card-value txt-blue">18</span></div>
                     <div class="metric-card"><span class="card-title">Emergency Alerts</span><span
                             class="card-value txt-red">03</span></div>
                     <div class="metric-card"><span class="card-title">Weather</span><span
-                            class="card-value txt-orange">34°C</span></div>
+                            id="metric-weather" class="card-value txt-orange">--</span></div>
                 </div>
 
                 <div class="dashboard-split">
                     <div class="panel-card">
                         <h3>🤖 AI Recommendation</h3>
-                        <p class="rec-intro">Based on your current location, the safest shelter is <strong>Khulna
-                                Government Shelter</strong>.</p>
+                        <p class="rec-intro">Based on your current location, the safest shelter is
+                            <strong id="dash-rec-title">checking live shelter data...</strong>.</p>
                         <ul class="rec-list">
-                            <li><i class="fa-solid fa-square-check text-green"></i> Available Capacity : 128</li>
-                            <li><i class="fa-solid fa-box-open text-purple"></i> Food Available</li>
-                            <li><i class="fa-solid fa-kit-medical text-red"></i> Medical Support</li>
-                            <li><i class="fa-solid fa-bus text-blue"></i> Distance : 2.3 KM</li>
+                            <li><i class="fa-solid fa-square-check text-green"></i> <span id="dash-rec-capacity">--</span></li>
+                            <li><i class="fa-solid fa-box-open text-purple"></i> <span id="dash-rec-food">--</span></li>
+                            <li><i class="fa-solid fa-kit-medical text-red"></i> <span id="dash-rec-medical">--</span></li>
+                            <li><i class="fa-solid fa-bus text-blue"></i> Distance: <span id="dash-rec-distance">--</span></li>
                         </ul>
                         <button class="action-btn-primary" onclick="window.location.href='map.html'">View
                             Shelter</button>
@@ -143,6 +143,7 @@
         </main>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 
 </body>

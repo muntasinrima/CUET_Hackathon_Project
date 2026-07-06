@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="map">
     <div class="app-container">
         <aside class="main-sidebar">
             <div class="sidebar-brand">
@@ -32,17 +32,15 @@
         <main class="content-viewport">
             <div class="dynamic-container" style="padding: 20px; height: 100%;">
                 <div class="panel-card" style="height: 100%;">
-                    <h3>🗺️ Live Geospatial Operations Map</h3>
+                    <h3>Live Geospatial Operations Map</h3>
+                    <p id="map-status" class="muted-line">Preparing live location map...</p>
                     <div id="full-map" style="width:100%; height:calc(100% - 40px); border-radius:10px;"></div>
                 </div>
             </div>
         </main>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        const fullMap = L.map('full-map').setView([22.8156, 89.5634], 12);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(fullMap);
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

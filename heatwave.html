@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="heatwave">
     <div class="app-container">
         <aside class="main-sidebar">
             <div class="sidebar-brand">
@@ -32,12 +32,15 @@
         <main class="content-viewport">
             <div class="dynamic-container">
                 <div class="panel-card">
-                    <h3>☀️ Heatwave Safety Control</h3>
-                    <p style="color: var(--text-muted);">Real-time ambient heat mapping analysis indexes.</p>
+                    <h3>Heatwave Safety Control</h3>
+                    <p class="muted-line">Real-time ambient heat mapping analysis indexes for <span id="heat-location">your area</span>.</p>
+                    <div id="heat-grid" class="metrics-grid compact-grid"></div>
+                    <div class="route-output" id="heat-advice">Waiting for live heat analysis...</div>
                 </div>
             </div>
         </main>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
