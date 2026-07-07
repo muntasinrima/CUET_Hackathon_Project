@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Live Emergency Status</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .alert-box {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        .status-active {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .status-none {
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alert-box">
+        <h1>Emergency Status</h1>
+        <div id="status-display">Checking live data...</div>
+        <br>
+        <a href="index.html" style="color: #38bdf8;">Back to Home</a>
+    </div>
+
+    <!-- <script>
+        async function checkEmergency() {
+            const display = document.getElementById("status-display");
+            // api.allorigins.win ব্যবহার করা হচ্ছে CORS সমস্যা এড়াতে
+            const apiUrl = "https://www.gdacs.org/gdacsapi/api/events/geteventlist/country/BGD";
+            const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(apiUrl);
+
+            try {
+                display.innerText = "Loading live data...";
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+
+                // প্রক্সি সার্ভার থেকে আসা JSON কন্টেন্ট পার্স করা
+                const events = JSON.parse(data.contents);
+
+                if (events.features && events.features.length > 0) {
+                    const latest = events.features[0].properties;
+                    display.innerHTML = `<p class="status-active">⚠️ ALERT: ${latest.eventname}</p>
+                                     <p>Location: ${latest.country}</p>
+                                     <p>Date: ${new Date(latest.fromdate).toDateString()}</p>`;
+                } else {
+                    display.innerHTML = `<p class="status-none">✅ No active emergency alerts found in your region.</p>`;
+                }
+            } catch (err) {
+                console.error(err);
+                display.innerText = "Could not connect to emergency server. Please check your internet.";
+            }
+        }
+
+        checkEmergency();
+    </script> -->
+</body>
+
+</html>
