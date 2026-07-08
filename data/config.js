@@ -1,0 +1,48 @@
+const RESQ_DEFAULTS = {
+    openWeatherKey: "c4a288da192d172dae0644850eb84877",
+    assistantEndpoint: "/api/assistant",
+    reportEndpoint: "/api/reports",
+    heatWarningCelsius: 38,
+    shelterCapacityWarning: 85,
+    profileName: "Field Operator",
+    profilePhone: "",
+};
+
+const RESQ_SAMPLE_SHELTERS = [
+    {
+        id: "demo-1",
+        name: "Khulna Government Cyclone Shelter",
+        lat: 22.8156,
+        lon: 89.5634,
+        address: "Khulna Sadar",
+        capacity: 600,
+        people: 328,
+        foodPercent: 72,
+        medical: true,
+        roadStatus: "Clear route, light traffic near the main road.",
+    },
+    {
+        id: "demo-2",
+        name: "Boyra Community Shelter",
+        lat: 22.8293,
+        lon: 89.5512,
+        address: "Boyra, Khulna",
+        capacity: 450,
+        people: 386,
+        foodPercent: 44,
+        medical: false,
+        roadStatus: "Waterlogging reported on one side road.",
+    },
+    {
+        id: "demo-3",
+        name: "Sonadanga School Shelter",
+        lat: 22.8044,
+        lon: 89.5409,
+        address: "Sonadanga, Khulna",
+        capacity: 520,
+        people: 210,
+        foodPercent: 83,
+        medical: true,
+        roadStatus: "Route currently open.",
+    },
+];
