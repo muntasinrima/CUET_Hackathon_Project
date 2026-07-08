@@ -1,60 +1,48 @@
-const shelters = [
-  {
-    id: 1,
-    name: "Rajshahi Government College Shelter",
-    district: "Rajshahi",
-    lat: 24.3745,
-    lng: 88.6042,
+function shelterCardHtml(shelter) {
+    const occupancy = Math.round((shelter.people / shelter.capacity) * 100);
+    const warningClass = occupancy >= getSettings().shelterCapacityWarning ? "danger" : "ok";
+    return `
+        <article class="data-card shelter-card">
+            <div class="data-card-header">
+                <div>
+                    <h4>${shelter.name}</h4>
+                    <p>${shelter.address}</p>
+                </div>
+                <span class="status-pill ${warningClass}">${formatDistance(shelter.distance)}</span>
+            </div>
+            <div class="stat-row"><span>People inside</span><strong>${shelter.people}/${shelter.capacity}</strong></div>
+            <div class="progress-track"><span style="width:${occupancy}%"></span></div>
+            <div class="stat-row"><span>Food stock</span><strong>${shelter.foodPercent}%</strong></div>
+            <div class="progress-track food"><span style="width:${shelter.foodPercent}%"></span></div>
+            <div class="detail-grid-small">
+                <span><i class="fa-solid fa-kit-medical"></i> ${shelter.medical ? "Medical available" : "Medical unavailable"}</span>
+                <span><i class="fa-solid fa-road"></i> ${shelter.roadStatus}</span>
+            </div>
+            <button class="action-btn-primary" onclick="showShelterRoute('${shelter.id}')">Check route</button>
+        </article>
+    `;
+}
 
-    capacity: 500,
-    occupied: 320,
+let latestShelters = [];
+let latestLocation = null;
 
-    food: true,
-    medical: true,
-    water: true,
-    electricity: true,
-    wheelchair: true,
+async function initSheltersPage() {
+    const list = document.getElementById("shelter-list");
+    if (!list) return;
+    list.innerHTML = "<p class='muted-line'>Finding shelters near your current location...</p>";
+    latestLocation = await getCurrentLocation();
+    latestShelters = await fetchNearbyShelters(latestLocation);
+    list.innerHTML = latestShelters.map(shelterCardHtml).join("");
+    setText("shelter-summary", `${latestShelters.length} shelters/safe points found near ${latestLocation.label}.`);
+}
 
-    status: "Open"
-  },
-
-  {
-    id: 2,
-    name: "RUET Emergency Shelter",
-    district: "Rajshahi",
-    lat: 24.3636,
-    lng: 88.6241,
-
-    capacity: 800,
-    occupied: 710,
-
-    food: true,
-    medical: true,
-    water: true,
-    electricity: true,
-    wheelchair: true,
-
-    status: "Open"
-  },
-
-  {
-    id: 3,
-    name: "Rajshahi City Corporation Shelter",
-    district: "Rajshahi",
-    lat: 24.3658,
-    lng: 88.5987,
-
-    capacity: 400,
-    occupied: 395,
-
-    food: false,
-    medical: true,
-    water: true,
-    electricity: false,
-    wheelchair: false,
-
-    status: "Open"
-  }
-];
-
-window.shelters = shelters;
+async function showShelterRoute(id) {
+    const shelter = latestShelters.find((item) => String(item.id) === String(id));
+    const output = document.getElementById("route-output");
+    if (!shelter || !latestLocation || !output) return;
+    output.textContent = "Checking route...";
+    const route = await fetchRouteSummary(latestLocation, shelter);
+    output.textContent = route
+        ? `${shelter.name}: ${route.distanceKm.toFixed(1)} km, about ${Math.round(route.durationMin)} min. ${route.status}`
+        : `${shelter.name}: ${formatDistance(shelter.distance)} away. Live route service unavailable, use the map before moving.`;
+}
