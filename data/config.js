@@ -1,3 +1,5 @@
+const RESQ_API_KEY = "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";
+
 const RESQ_DEFAULTS = {
     openWeatherKey: "c4a288da192d172dae0644850eb84877",
     assistantEndpoint: "/api/assistant",
@@ -7,6 +9,7 @@ const RESQ_DEFAULTS = {
     profileName: "Field Operator",
     profilePhone: "",
 };
+
 
 const RESQ_SAMPLE_SHELTERS = [
     {
