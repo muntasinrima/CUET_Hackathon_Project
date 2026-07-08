@@ -1,4 +1,8 @@
 async function initMapPage() {
+
+    // if (window.pageCache.map) return;
+    // window.pageCache.map = true;
+
     const mapElement = document.getElementById("full-map");
     if (!window.L || !mapElement) return;
     const status = document.getElementById("map-status");

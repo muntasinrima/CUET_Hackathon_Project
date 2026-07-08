@@ -158,6 +158,10 @@ Instructions:
 }
 
 function initAssistantPage() {
+
+    //  if (window.pageCache.assistant) return;
+    // window.pageCache.assistant = true;
+
     const form = document.getElementById("chat-form");
     if (!form) return;
     form.addEventListener("submit", sendAssistantMessage);
