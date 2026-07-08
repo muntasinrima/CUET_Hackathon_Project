@@ -1,3 +1,5 @@
+// window.pageCache = window.pageCache || {};
+
 document.addEventListener("DOMContentLoaded", () => {
     const page = document.body.dataset.page;
     if (page === "dashboard") initDashboardPage();

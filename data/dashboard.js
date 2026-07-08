@@ -1,4 +1,9 @@
 async function initDashboardPage() {
+
+    //  if (window.pageCache.dashboard) return;
+    // window.pageCache.dashboard = true;
+
+
     await getAutoLocationWeather(null);
     const location = await getCurrentLocation();
     const shelters = await fetchNearbyShelters(location);

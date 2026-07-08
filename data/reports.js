@@ -33,6 +33,10 @@ async function submitReport(event) {
 }
 
 function initReportPage() {
+
+    //  if (window.pageCache.report) return;
+    // window.pageCache.report = true;
+
     const form = document.getElementById("report-form");
     if (form) form.addEventListener("submit", submitReport);
 }

@@ -1,4 +1,8 @@
 function initSettingsPage() {
+
+    // if (window.pageCache.shelters) return;
+    // window.pageCache.shelters = true;
+
     const form = document.getElementById("settings-form");
     if (!form) return;
     const settings = getSettings();

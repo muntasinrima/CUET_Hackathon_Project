@@ -1,4 +1,8 @@
 async function initHeatwavePage() {
+
+    // if (window.pageCache.heatwave) return;
+    // window.pageCache.heatwave = true;
+
     const output = document.getElementById("heat-grid");
     if (!output) return;
     output.innerHTML = "<p class='muted-line'>Loading live heat index data...</p>";
