@@ -1,5 +1,5 @@
 const RESQ_DEFAULTS = {
-    openWeatherKey: "5232b569eb1f09cf5eeb40f932c2d91b",
+    openWeatherKey: "c4a288da192d172dae0644850eb84877",
     assistantEndpoint: "/api/assistant",
     reportEndpoint: "/api/reports",
     heatWarningCelsius: 38,
