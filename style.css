@@ -790,3 +790,455 @@ body {
     line-height: 1.6;
     font-weight: 500;
 }
+
+
+/* ==========================================================================
+   ADDITIONAL MULTI-PAGE LANDING FEATURE EXTENSIONS
+   ========================================================================== */
+
+.active-nav {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #f97316;
+    padding-bottom: 4px;
+}
+
+.info-page-container {
+    padding: 60px 4%;
+    width: 100%;
+    color: white;
+}
+
+.page-title {
+    font-size: 38px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    color: #94a3b8;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 45px;
+}
+
+/* Features Detailed UI Page Grid */
+.features-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+.detail-card {
+    background-color: #ffffff;
+    color: #1e293b;
+    border-radius: 14px;
+    padding: 35px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.detail-card i {
+    font-size: 40px;
+    color: #2563eb;
+    margin-bottom: 18px;
+}
+
+.detail-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.detail-card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* About Layout Mechanics */
+.about-flex-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.about-text-panel {
+    flex: 1.2;
+}
+
+.about-text-panel p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #cbd5e1;
+}
+
+.about-graphic-panel {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.network-icon {
+    font-size: 160px;
+    color: #2563eb;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Emergency Contacts UI Grid Layout */
+.emergency-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.contact-card {
+    background-color: #ffffff;
+    color: #1e293b;
+    border-radius: 14px;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.red-border {
+    border-top: 4px solid #ef4444;
+}
+
+.red-border .contact-icon-box {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.blue-border {
+    border-top: 4px solid #3b82f6;
+}
+
+.blue-border .contact-icon-box {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
+
+.green-border {
+    border-top: 4px solid #10b981;
+}
+
+.green-border .contact-icon-box {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+.orange-border {
+    border-top: 4px solid #f97316;
+}
+
+.orange-border .contact-icon-box {
+    background-color: #ffedd5;
+    color: #f97316;
+}
+
+.contact-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.phone-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.contact-card p {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.nav-logo a,
+.sidebar-brand a {
+    cursor: pointer;
+}
+
+/* Top Nav Weather Custom Hover Transitions */
+#weatherMenuOptions a:hover {
+    background-color: #f8fafc;
+    color: #2563eb !important;
+}
+
+.search-box-container input:focus {
+    border-color: #2563eb !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Live API feature pages */
+.muted-line {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.compact-grid {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    margin-top: 18px;
+}
+
+.data-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.data-card {
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 18px;
+    background: #ffffff;
+}
+
+.data-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.data-card h4 {
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.data-card p,
+.data-card span {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 68px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.status-pill.ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-pill.danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 10px 0 7px;
+    font-size: 13px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-track span {
+    display: block;
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: inherit;
+}
+
+.progress-track.food span {
+    background: var(--orange-warning);
+}
+
+.detail-grid-small {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.detail-grid-small span {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.route-output {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 16px 0 20px;
+    background: #f8fafc;
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.chat-messages {
+    height: 430px;
+    overflow-y: auto;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 18px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-bubble {
+    max-width: 76%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.chat-bubble.user {
+    align-self: flex-end;
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.chat-bubble.bot {
+    align-self: flex-start;
+    background: #ffffff;
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+}
+
+.chat-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.chat-form input,
+.settings-form input,
+.settings-form select,
+.settings-form textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 13px;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: #ffffff;
+    outline: none;
+}
+
+.chat-form input:focus,
+.settings-form input:focus,
+.settings-form select:focus,
+.settings-form textarea:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.settings-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.settings-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.settings-form textarea,
+.settings-form button,
+.settings-form .route-output {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+    body {
+        overflow: auto;
+        height: auto;
+    }
+
+    .app-container {
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .main-sidebar {
+        width: 220px;
+    }
+
+    .metrics-grid,
+    .compact-grid,
+    .settings-form {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-form {
+        flex-direction: column;
+    }
+}
